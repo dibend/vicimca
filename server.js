@@ -30,11 +30,7 @@ app.get('/', function(request, response) {
     }
   };
 
-  function callback(err, res, body) {
-    console.log(body);
-  };
-
-  req.post(options, function callback(err, res, body) {
+  req.post(options, function(err, res, body) {
     console.log(body);
     response.send(body);
   });
