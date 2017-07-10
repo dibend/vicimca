@@ -1,0 +1,16 @@
+{
+  "name": "vicimca",
+  "version": "1.0.0",
+  "description": "link vicidial with mcasuite",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "David DiBenedetto",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "request": "^2.81.0"
+  }
+}
