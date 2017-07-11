@@ -1,7 +1,7 @@
 var req = require('request');
 var express = require('express');
-var app = express();
 var config = require('./config');
+var app = express();
 
 app.get('/', function(request, response) {
   var lead = request.query;
@@ -29,6 +29,14 @@ app.get('/', function(request, response) {
       companyName: lead.address2
     }
   };
+  
+  if(options.form.firstName === '' || options.form.firstName == null) {
+    options.form.firstName = 'N/A';
+  }
+
+  if(options.form.lastName === '' || options.form.lastName == null) {
+    options.form.lastName = 'N/A';
+  }
 
   req.post(options, function(err, res, body) {
     console.log(body);
