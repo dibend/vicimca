@@ -10,7 +10,10 @@
   "author": "David DiBenedetto",
   "license": "ISC",
   "dependencies": {
+    "email-validator": "^1.0.7",
     "express": "^4.15.3",
+    "nodemailer": "^4.0.1",
+    "nodemailer-smtp-transport": "^2.7.4",
     "request": "^2.81.0"
   }
 }
