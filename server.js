@@ -30,6 +30,11 @@ app.get('/', function(request, response) {
     }
   };
   
+  if(options.form.businessPhone === '' || options.form.businessPhone == null) {
+    response.status(404);
+    response.send('404');
+  }
+
   if(options.form.firstName === '' || options.form.firstName == null) {
     options.form.firstName = 'N/A';
   }
