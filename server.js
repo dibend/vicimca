@@ -60,7 +60,8 @@ app.get('/', function(request, response) {
       '\n\nProvince:\n' + lead.province + 
       '\n\nZip:\n' + lead.postal_code + 
       '\n\nGender:\n' + lead.gender +
-      '\n\nComments:\n' + lead.comments; 
+      '\n\nComments:\n' + lead.comments + 
+      '\n\nAgent:\n' + lead.fullname; 
 
       var mailOptions = {
         from: config.from,
@@ -78,7 +79,7 @@ app.get('/', function(request, response) {
     }
 
     req.post(options, function(err, res, body) {
-      response.send(body);
+      response.redirect('https://standard.mcasuite.com/contactStage/search?offset=0&max=99999');
     });
   }
 });
