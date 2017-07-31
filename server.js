@@ -47,25 +47,32 @@ app.get('/', function(request, response) {
       options.form.lastName = 'N/A';
     }
 
-    var agent = lead.agent_email;
-    if (emailValidator.validate(agent)) {
-      var emailText = 'Company Name:\n' + lead.address2 + 
-      '\n\nBusiness Phone:\n' + lead.phone_number + 
-      '\n\nCell Phone:\n' + lead.alt_phone + 
-      '\n\nOwner:\n' + lead.first_name + ' ' + lead.middle_initial + ' ' + lead.last_name +
-      '\n\nAddress 1:\n' + lead.address1 + 
-      '\n\nAddress 3:\n' + lead.address3 + 
-      '\n\nCity:\n' + lead.city + 
-      '\n\nState:\n' + lead.state + 
-      '\n\nProvince:\n' + lead.province + 
-      '\n\nZip:\n' + lead.postal_code + 
-      '\n\nGender:\n' + lead.gender +
-      '\n\nComments:\n' + lead.comments + 
-      '\n\nAgent:\n' + lead.fullname; 
+    if (emailValidator.validate(lead.agent_email)) {
+      var contact = {
+        'Company Name': lead.address2,
+        'Business Phone': lead.phone_number,
+        'Cell Phone': lead.alt_phone,
+        'Owner': lead.first_name + ' ' + lead.middle_initial + ' ' + lead.last_name,
+        'Address 1': lead.address1,
+        'Address 3': lead.address3, 
+        'City': lead.city,
+        'State': lead.state, 
+        'Province': lead.province, 
+        'Zip': lead.postal_code,
+        'Gender': lead.gender,
+        'Comments': lead.comments,
+        'Agent': lead.fullname
+      }
+      var emailText = '';
+      for(dp in contact) {
+        if(contact[dp] !== '') {
+          emailText += dp + ':\n' + contact[dp] + '\n\n';
+        }
+      }
 
       var mailOptions = {
         from: config.from,
-        to: agent,
+        to: lead.agent_email,
         subject: 'Vicidial Lead',
         text: emailText
       };
@@ -85,5 +92,5 @@ app.get('/', function(request, response) {
 });
 
 app.listen(8080, function () {
-  console.log('app listening on port 8080')
+  console.log('app listening on port 8080');
 });
