@@ -61,6 +61,7 @@ app.get('/', function(request, response) {
         'Zip': lead.postal_code,
         'Gender': lead.gender,
         'Comments': lead.comments,
+        'Email': lead.email,
         'Agent': lead.fullname
       }
       var emailText = '';
